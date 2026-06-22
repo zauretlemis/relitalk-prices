@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReLiTalk — Специальные условия</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #7c5cfc;
+    --purple-light: #ece8ff;
+    --cream: #faf9f6;
+    --dark: #0f0e1a;
+    --green: #2cb67d;
+    --green-light: #eafaf3;
+    --red: #e05c5c;
+    --red-light: #fff0f0;
+    --gray: #6b6b8a;
+    --border: #e8e4f0;
+  }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .logo {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--purple);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .headline {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .headline h1 {
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+  .headline h1 span { color: var(--purple); }
+  .headline .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+
+  /* TIMER */
+  .timer-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  .timer-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+  .timer-box {
+    background: #fff;
+    border: 2px solid var(--purple);
+    border-radius: 16px;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: border-color 0.4s;
+  }
+  .timer-box.expired-timer { border-color: var(--red); }
+  .timer-unit { display: flex; flex-direction: column; align-items: center; min-width: 52px; }
+  .timer-num {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--purple);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
+    line-height: 1;
+    transition: color 0.4s;
+  }
+  .timer-box.expired-timer .timer-num { color: var(--red); }
+  .timer-unit-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .timer-sep {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--purple);
+    margin-bottom: 12px;
+    opacity: 0.4;
+    transition: color 0.4s;
+  }
+  .timer-box.expired-timer .timer-sep { color: var(--red); }
+
+  /* EXPIRED BANNER */
+  .expired-msg {
+    display: none;
+    background: var(--red-light);
+    border: 1.5px solid var(--red);
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a32d2d;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 880px;
+    width: 100%;
+  }
+  .card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 26px 22px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .card.featured {
+    border-color: var(--purple);
+    border-width: 2px;
+    background: #faf8ff;
+  }
+  .best-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--purple);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .card-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--purple);
+    background: var(--purple-light);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    margin-top: 6px;
+  }
+  .card-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  /* PRICE BLOCK */
+  .price-per-month {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 2px;
+  }
+  .price-per-month strong {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+    display: block;
+  }
+  .card.featured .price-per-month strong { color: var(--purple); }
+
+  .installment-line {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 3px;
+    margin-bottom: 16px;
+  }
+  .installment-line strong { color: var(--purple); font-weight: 600; }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 14px;
+  }
+
+  /* TOTAL — changes on expiry */
+  .price-block { width: 100%; text-align: center; }
+
+  /* ACTIVE STATE (default) */
+  .price-total-active { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .price-old-active { font-size: 13px; color: #bbb; text-decoration: line-through; margin-bottom: 8px; }
+  .savings-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* EXPIRED STATE (shown after timer) */
+  .price-block-expired { display: none; }
+  .price-total-expired { font-size: 13px; color: #bbb; text-decoration: line-through; margin-bottom: 3px; }
+  .price-full-expired { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .expired-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a32d2d;
+    background: var(--red-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .kaspi-note {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 12px;
+  }
+
+  /* FOOTER */
+  .footer-note {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+  }
+  .footer-note strong { color: var(--purple); }
+
+  @media (max-width: 700px) {
+    .cards { grid-template-columns: 1fr; max-width: 340px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="logo">ReLiTalk</div>
+
+<div class="headline">
+  <h1>Специальные условия<br><span>только прямо сейчас</span></h1>
+  <p class="sub">Скидка действует пока открыта эта страница</p>
+</div>
+
+<div class="timer-wrap">
+  <div class="timer-label">Время действия скидки</div>
+  <div class="timer-box" id="timerBox">
+    <div class="timer-unit">
+      <div class="timer-num" id="minutes">05</div>
+      <div class="timer-unit-label">минут</div>
+    </div>
+    <div class="timer-sep">:</div>
+    <div class="timer-unit">
+      <div class="timer-num" id="seconds">00</div>
+      <div class="timer-unit-label">секунд</div>
+    </div>
+  </div>
+</div>
+
+<div class="expired-msg" id="expiredMsg">⏱ Время истекло — скидка больше не действует</div>
+
+<div class="cards">
+
+  <!-- 12 месяцев -->
+  <div class="card">
+    <div class="card-tag">Разговорный уровень</div>
+    <div class="card-title">12 месяцев</div>
+    <div class="price-per-month">
+      <strong id="monthly1">28 500 ₸</strong>
+      в месяц
+    </div>
+    <div class="price-block" id="block1">
+      <div class="price-total-active">342 000 ₸</div>
+      <div class="price-old-active">490 000 ₸</div>
+      <div class="savings-badge">Экономия 148 000 ₸</div>
+    </div>
+    <div class="price-block-expired" id="block1exp">
+      <div class="price-total-expired">342 000 ₸</div>
+      <div class="price-full-expired">490 000 ₸</div>
+      <div class="expired-badge">Скидка истекла</div>
+    </div>
+  </div>
+
+  <!-- 24 месяца -->
+  <div class="card featured">
+    <div class="best-badge">Лучший выбор</div>
+    <div class="card-tag">Свободный английский</div>
+    <div class="card-title">24 месяца</div>
+    <div class="price-per-month">
+      <strong id="monthly2">20 800 ₸</strong>
+      в месяц
+    </div>
+    <div class="price-block" id="block2">
+      <div class="price-total-active">499 200 ₸</div>
+      <div class="price-old-active">832 000 ₸</div>
+      <div class="savings-badge">Экономия 332 800 ₸</div>
+    </div>
+    <div class="price-block-expired" id="block2exp">
+      <div class="price-total-expired">499 200 ₸</div>
+      <div class="price-full-expired">832 000 ₸</div>
+      <div class="expired-badge">Скидка истекла</div>
+    </div>
+  </div>
+
+  <!-- Lifetime -->
+  <div class="card">
+    <div class="card-tag">Английский навсегда</div>
+    <div class="card-title">Lifetime</div>
+    <div class="price-per-month">
+      <strong id="monthly3">28 500 ₸</strong>
+      в месяц
+    </div>
+    <div class="price-block" id="block3">
+      <div class="price-total-active">684 000 ₸</div>
+      <div class="price-old-active">1 368 000 ₸</div>
+      <div class="savings-badge">Экономия 684 000 ₸</div>
+    </div>
+    <div class="price-block-expired" id="block3exp">
+      <div class="price-total-expired">684 000 ₸</div>
+      <div class="price-full-expired">1 368 000 ₸</div>
+      <div class="expired-badge">Скидка истекла</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-note">
+  Рассрочка без % · <strong>Скидка только на пробном уроке</strong>
+</div>
+
+<script>
+  const DURATION = 5 * 60;
+  let remaining = DURATION;
+  const mEl = document.getElementById('minutes');
+  const sEl = document.getElementById('seconds');
+  const timerBox = document.getElementById('timerBox');
+  const expiredMsg = document.getElementById('expiredMsg');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function fmt(n) {
+    return Math.round(n).toLocaleString('ru-RU') + ' ₸';
+  }
+
+  function onExpire() {
+    timerBox.classList.add('expired-timer');
+    expiredMsg.style.display = 'block';
+    [1,2,3].forEach(i => {
+      document.getElementById('block' + i).style.display = 'none';
+      document.getElementById('block' + i + 'exp').style.display = 'block';
+    });
+    document.getElementById('monthly1').textContent = fmt(490000 / 12);
+    document.getElementById('monthly2').textContent = fmt(832000 / 24);
+    document.getElementById('monthly3').textContent = fmt(1368000 / 24);
+    document.getElementById('monthly1').style.color = '#0f0e1a';
+    document.getElementById('monthly2').style.color = '#0f0e1a';
+    document.getElementById('monthly3').style.color = '#0f0e1a';
+  }
+
+  function tick() {
+    if (remaining <= 0) {
+      mEl.textContent = '00';
+      sEl.textContent = '00';
+      onExpire();
+      return;
+    }
+    mEl.textContent = pad(Math.floor(remaining / 60));
+    sEl.textContent = pad(remaining % 60);
+    remaining--;
+    setTimeout(tick, 1000);
+  }
+
+  tick();
+</script>
+</body>
+</html>
