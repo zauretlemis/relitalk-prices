@@ -190,7 +190,10 @@
       return;
     }
 
-    if (val !== getTodayCode()) {
+    const mops = ['BEKZAT','DINARA','ERKEJАН','IGOR','MAKSIM','MANSUR','MARAT','SYMBAT'];
+    const today = getTodayCode();
+    const valid = val === today || mops.some(m => val === m + today);
+    if (!valid) {
       input.classList.remove('valid');
       input.classList.add('invalid');
       msg.textContent = 'Неверный промокод';
