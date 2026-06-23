@@ -97,6 +97,15 @@
   .promo-footer { margin-top: 10px; font-size: 13px; color: var(--gray); opacity: 0; transition: opacity 0.5s; text-align: center; }
   .promo-footer.visible { opacity: 1; }
 
+  .corner-badge {
+    position: absolute; top: -1px; right: -1px;
+    background: #7c5cfc; color: #fff;
+    font-size: 11px; font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 0 20px 0 12px;
+    opacity: 0; transition: opacity 0.5s ease;
+  }
+  .corner-badge.visible { opacity: 1; }
   @media (max-width: 700px) { .cards { grid-template-columns: 1fr; max-width: 340px; } }
 </style>
 </head>
@@ -119,6 +128,7 @@
 
 <div class="cards">
   <div class="card">
+    <div class="corner-badge" id="b1">-30%</div>
     <div class="card-tag">Разговорный уровень</div>
     <div class="card-title">12 месяцев</div>
     <div class="price-total" id="t1">490 000 ₸</div>
@@ -129,6 +139,7 @@
   </div>
   <div class="card featured">
     <div class="best-badge">Лучший выбор</div>
+    <div class="corner-badge" id="b2">-40%</div>
     <div class="card-tag">Свободный английский</div>
     <div class="card-title">24 месяца</div>
     <div class="price-total" id="t2">832 000 ₸</div>
@@ -138,6 +149,7 @@
     <div class="savings-wrap"><div class="savings-badge" id="s2">Экономия 332 800 ₸</div></div>
   </div>
   <div class="card">
+    <div class="corner-badge" id="b3">-50%</div>
     <div class="card-tag">Английский навсегда</div>
     <div class="card-title">Lifetime</div>
     <div class="price-total" id="t3">1 368 000 ₸</div>
@@ -211,6 +223,9 @@
     }
 
     document.getElementById('promoFooter').classList.add('visible');
+    document.getElementById('b1').classList.add('visible');
+    document.getElementById('b2').classList.add('visible');
+    document.getElementById('b3').classList.add('visible');
   }
 
   document.getElementById('promoInput').addEventListener('keydown', e => {
