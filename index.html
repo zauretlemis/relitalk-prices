@@ -75,7 +75,7 @@
   }
   .card-title { font-size: 26px; font-weight: 800; color: var(--dark); margin-bottom: 18px; letter-spacing: -0.5px; }
   .price-month { font-size: 13px; color: var(--gray); margin-bottom: 14px; }
-  .price-month strong { font-size: 17px; font-weight: 700; color: var(--gray); letter-spacing: 0; display: inline; transition: all 0.5s ease; }
+  .price-month strong { font-size: 20px; font-weight: 700; color: var(--dark); letter-spacing: -0.3px; display: block; margin-bottom: 2px; transition: all 0.5s ease; }
   .card.featured .price-month strong { color: var(--purple); }
   .card.featured .price-total { color: var(--purple); }
   .divider { width: 40px; height: 1px; background: var(--border); margin: 14px auto; }
@@ -95,7 +95,7 @@
   .footer-note { margin-top: 28px; font-size: 12px; color: var(--gray); text-align: center; }
   .footer-note strong { color: var(--purple); }
   .promo-footer { margin-top: 10px; font-size: 13px; color: var(--gray); opacity: 0; transition: opacity 0.5s; text-align: center; }
-  .promo-footer.visible { opacity: 1; color: var(--purple); font-weight: 600; }
+  .promo-footer.visible { opacity: 1; }
 
   @media (max-width: 700px) { .cards { grid-template-columns: 1fr; max-width: 340px; } }
 </style>
@@ -149,7 +149,7 @@
 </div>
 
 <div class="footer-note">Рассрочка без %</div>
-<div class="promo-footer" id="promoFooter"><strong>Скидка только на пробном уроке</strong></div>
+<div class="promo-footer" id="promoFooter" style="font-size:15px; font-weight:700; color:#7c5cfc;">🎁 Скидка действует только на пробном уроке</div>
 
 <script>
   const CODES = ['BEKZAT','DINARA','ERKEJАН','IGOR','MAKSIM','MANSUR','MARAT','SYMBAT'];
