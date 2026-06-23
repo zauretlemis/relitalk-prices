@@ -110,7 +110,7 @@
 
 <div class="promo-wrap">
   <div class="promo-row">
-    <input class="promo-input" id="promoInput" type="text" placeholder="ПРОМОКОД" maxlength="10">
+    <input class="promo-input" id="promoInput" type="password" placeholder="••••••••" maxlength="10">
     <button class="promo-btn" onclick="applyPromo()">Применить</button>
   </div>
   <div class="promo-msg" id="promoMsg"></div>
@@ -151,12 +151,7 @@
 <div class="promo-footer" id="promoFooter"><strong>Скидка только на пробном уроке</strong></div>
 
 <script>
-  function getTodayCode() {
-    const now = new Date();
-    const d = String(now.getDate()).padStart(2, '0');
-    const m = String(now.getMonth() + 1).padStart(2, '0');
-    return d + m;
-  }
+  const CODES = ['BEKZAT','DINARA','ERKEJАН','IGOR','MAKSIM','MANSUR','MARAT','SYMBAT'];
 
   const DISCOUNT = {
     m: ['28 500 ₸', '20 800 ₸', '28 500 ₸'],
@@ -190,10 +185,7 @@
       return;
     }
 
-    const mops = ['BEKZAT','DINARA','ERKEJАН','IGOR','MAKSIM','MANSUR','MARAT','SYMBAT'];
-    const today = getTodayCode();
-    const valid = val === today || mops.some(m => val === m + today);
-    if (!valid) {
+    if (!CODES.includes(val)) {
       input.classList.remove('valid');
       input.classList.add('invalid');
       msg.textContent = 'Неверный промокод';
