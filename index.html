@@ -29,83 +29,37 @@
     padding: 40px 20px;
   }
   .logo { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--purple); text-transform: uppercase; margin-bottom: 28px; }
-
   .headline { text-align: center; margin-bottom: 32px; }
   .headline h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 900; line-height: 1.15; letter-spacing: -1px; }
   .headline h1 span { color: var(--purple); }
   .headline .sub { font-size: 14px; color: var(--gray); margin-top: 8px; }
 
-  /* PROMO INPUT */
-  .promo-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 36px;
-    gap: 8px;
-  }
-  .promo-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+  .promo-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 36px; gap: 8px; }
+  .promo-row { display: flex; gap: 8px; align-items: center; }
   .promo-input {
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--dark);
-    background: #fff;
-    outline: none;
-    width: 200px;
-    transition: border-color 0.2s;
+    border: 1.5px solid var(--border); border-radius: 12px; padding: 10px 16px;
+    font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--dark);
+    background: #fff; outline: none; width: 180px; transition: border-color 0.2s;
   }
   .promo-input:focus { border-color: var(--purple); }
   .promo-input.valid { border-color: var(--green); }
   .promo-input.invalid { border-color: #e05c5c; }
   .promo-btn {
-    background: var(--purple);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: var(--purple); color: #fff; border: none; border-radius: 12px;
+    padding: 10px 20px; font-size: 14px; font-family: 'Inter', sans-serif;
+    font-weight: 600; cursor: pointer; transition: background 0.2s;
   }
   .promo-btn:hover { background: #5a3dd8; }
-  .promo-msg {
-    font-size: 12px;
-    font-weight: 500;
-    height: 16px;
-    transition: all 0.3s;
-  }
+  .promo-msg { font-size: 12px; font-weight: 500; height: 16px; transition: all 0.3s; }
   .promo-msg.success { color: var(--green); }
   .promo-msg.error { color: #e05c5c; }
 
-  /* CARDS */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 880px;
-    width: 100%;
-  }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 880px; width: 100%; }
   .card {
-    background: #fff;
-    border: 1.5px solid var(--border);
-    border-radius: 20px;
-    padding: 26px 22px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
+    background: #fff; border: 1.5px solid var(--border); border-radius: 20px;
+    padding: 26px 22px 28px; display: flex; flex-direction: column;
+    align-items: center; text-align: center; position: relative;
   }
   .card.featured { border-color: var(--purple); border-width: 2px; background: #faf8ff; }
   .best-badge {
@@ -120,47 +74,26 @@
     border-radius: 20px; margin-bottom: 14px; margin-top: 6px;
   }
   .card-title { font-size: 26px; font-weight: 800; color: var(--dark); margin-bottom: 18px; letter-spacing: -0.5px; }
-
-  /* PRICE — анимируемая */
   .price-month { font-size: 13px; color: var(--gray); margin-bottom: 2px; }
-  .price-month strong {
-    font-size: 30px; font-weight: 800; color: var(--dark);
-    letter-spacing: -0.5px; display: block;
-    transition: all 0.5s ease;
-  }
+  .price-month strong { font-size: 30px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; display: block; transition: all 0.5s ease; }
   .card.featured .price-month strong { color: var(--purple); }
-
   .divider { width: 40px; height: 1px; background: var(--border); margin: 14px auto; }
-
-  .price-total {
-    font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 3px;
-    transition: all 0.5s ease;
-  }
+  .price-total { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 3px; transition: all 0.5s ease; }
   .price-old-wrap { height: 20px; margin-bottom: 8px; }
-  .price-old {
-    font-size: 13px; color: #bbb; text-decoration: line-through;
-    opacity: 0; transition: opacity 0.5s ease;
-  }
+  .price-old { font-size: 13px; color: #bbb; text-decoration: line-through; opacity: 0; transition: opacity 0.5s ease; }
   .price-old.visible { opacity: 1; }
-
   .savings-wrap { height: 28px; }
   .savings-badge {
     display: inline-block; font-size: 12px; font-weight: 600;
-    color: var(--green); background: var(--green-light);
-    padding: 4px 12px; border-radius: 20px;
-    opacity: 0; transform: translateY(4px);
+    color: var(--green); background: var(--green-light); padding: 4px 12px;
+    border-radius: 20px; opacity: 0; transform: translateY(4px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .savings-badge.visible { opacity: 1; transform: translateY(0); }
 
-  /* FOOTER */
   .footer-note { margin-top: 28px; font-size: 12px; color: var(--gray); text-align: center; }
   .footer-note strong { color: var(--purple); }
-  .promo-footer {
-    margin-top: 6px; font-size: 12px; color: var(--gray);
-    opacity: 0; transition: opacity 0.5s;
-    text-align: center;
-  }
+  .promo-footer { margin-top: 6px; font-size: 12px; color: var(--gray); opacity: 0; transition: opacity 0.5s; text-align: center; }
   .promo-footer.visible { opacity: 1; }
 
   @media (max-width: 700px) { .cards { grid-template-columns: 1fr; max-width: 340px; } }
@@ -177,26 +110,22 @@
 
 <div class="promo-wrap">
   <div class="promo-row">
-    <input class="promo-input" id="promoInput" type="text" placeholder="ПРОМОКОД" maxlength="20">
+    <input class="promo-input" id="promoInput" type="text" placeholder="ПРОМОКОД" maxlength="10">
     <button class="promo-btn" onclick="applyPromo()">Применить</button>
   </div>
   <div class="promo-msg" id="promoMsg"></div>
 </div>
 
 <div class="cards">
-
-  <!-- 12 месяцев -->
   <div class="card">
     <div class="card-tag">Разговорный уровень</div>
     <div class="card-title">12 месяцев</div>
-    <div class="price-month"><strong id="m1">28 500 ₸</strong>в месяц</div>
+    <div class="price-month"><strong id="m1">40 833 ₸</strong>в месяц</div>
     <div class="divider"></div>
     <div class="price-total" id="t1">490 000 ₸</div>
     <div class="price-old-wrap"><div class="price-old" id="o1">490 000 ₸</div></div>
     <div class="savings-wrap"><div class="savings-badge" id="s1">Экономия 148 000 ₸</div></div>
   </div>
-
-  <!-- 24 месяца -->
   <div class="card featured">
     <div class="best-badge">Лучший выбор</div>
     <div class="card-tag">Свободный английский</div>
@@ -207,8 +136,6 @@
     <div class="price-old-wrap"><div class="price-old" id="o2">832 000 ₸</div></div>
     <div class="savings-wrap"><div class="savings-badge" id="s2">Экономия 332 800 ₸</div></div>
   </div>
-
-  <!-- Lifetime -->
   <div class="card">
     <div class="card-tag">Английский навсегда</div>
     <div class="card-title">Lifetime</div>
@@ -218,27 +145,22 @@
     <div class="price-old-wrap"><div class="price-old" id="o3">1 368 000 ₸</div></div>
     <div class="savings-wrap"><div class="savings-badge" id="s3">Экономия 684 000 ₸</div></div>
   </div>
-
 </div>
 
 <div class="footer-note">Рассрочка без %</div>
 <div class="promo-footer" id="promoFooter"><strong>Скидка только на пробном уроке</strong></div>
 
 <script>
-  const CODES = {
-    'BEKZAT': true, 'DINARA': true, 'ERKEJАН': true,
-    'IGOR': true, 'MAKSIM': true, 'MANSUR': true,
-    'MARAT': true, 'SYMBAT': true, 'RELITALK': true
-  };
+  function getTodayCode() {
+    const now = new Date();
+    const d = String(now.getDate()).padStart(2, '0');
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    return d + m;
+  }
 
-  const NORMAL = {
-    m: ['28 500 ₸', '34 667 ₸', '57 000 ₸'],
-    t: ['490 000 ₸', '832 000 ₸', '1 368 000 ₸'],
-  };
   const DISCOUNT = {
     m: ['28 500 ₸', '20 800 ₸', '28 500 ₸'],
     t: ['342 000 ₸', '499 200 ₸', '684 000 ₸'],
-    o: ['490 000 ₸', '832 000 ₸', '1 368 000 ₸'],
     s: ['Экономия 148 000 ₸', 'Экономия 332 800 ₸', 'Экономия 684 000 ₸'],
   };
 
@@ -262,17 +184,17 @@
     const input = document.getElementById('promoInput');
     const msg = document.getElementById('promoMsg');
 
-    if (!CODES[val]) {
+    if (promoApplied) {
+      msg.textContent = 'Промокод уже применён';
+      msg.className = 'promo-msg success';
+      return;
+    }
+
+    if (val !== getTodayCode()) {
       input.classList.remove('valid');
       input.classList.add('invalid');
       msg.textContent = 'Неверный промокод';
       msg.className = 'promo-msg error';
-      return;
-    }
-
-    if (promoApplied) {
-      msg.textContent = 'Промокод уже применён';
-      msg.className = 'promo-msg success';
       return;
     }
 
@@ -286,7 +208,6 @@
       const delay = i * 150;
       animateValue(document.getElementById(`m${i+1}`), DISCOUNT.m[i], delay);
       animateValue(document.getElementById(`t${i+1}`), DISCOUNT.t[i], delay + 100);
-
       setTimeout(() => {
         document.getElementById(`o${i+1}`).classList.add('visible');
         document.getElementById(`s${i+1}`).classList.add('visible');
